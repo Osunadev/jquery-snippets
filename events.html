@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JQuery Crash Course | Selectors</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+    <!-- If we would like to put our jquery code in the head
+    we should wrap our javascript jquery code inside the 
+    $(document).ready(function() { }) initializer -->
+
+    <!-- <script>
+      $(document).ready(function () {
+        
+        $('#btn1').click(function () {
+          alert('Button clicked');
+        });
+
+      });
+    </script> -->
+    <style>
+      body {
+        font-size: 17px;
+        font-family: Arial, Helvetica, sans-serif;
+        background: #f4f4f4;
+        line-height: 1.5em;
+      }
+
+      header {
+        background: #333;
+        color: white;
+        padding: 20px;
+        text-align: center;
+        margin-bottom: 10px;
+        border-bottom: 4px solid #000;
+      }
+
+      #container {
+        width: 90%;
+        margin: 0 auto;
+        padding: 10px;
+      }
+
+      #coord-title {
+        font-size: 20px;
+        font-weight: 700;
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>JQuery Crash Course</h1>
+    </header>
+
+    <div id="container">
+      <h3>Mouse Events</h3>
+      <button id="btn1" class="btnClass">Button 1</button>
+      <button id="btn2">Button 2</button>
+      <p class="para1">
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam
+        aliquam ad, vel recusandae labore pariatur fugit deserunt fugiat
+        cupiditate error repellat quod consectetur necessitatibus adipisci natus
+        doloribus nobis! Perspiciatis, mollitia!
+      </p>
+
+      <!-- <p>
+        <span id="coord-title">X Coordinate: </span>
+        <span id="xcoord"></span>
+      </p>
+
+
+        <span id="coord-title">X Coordinate: </span>
+        <span id="ycoord"></span>
+      </p> -->
+
+      <hr />
+
+      <form id="form">
+        <label>Name</label><br />
+        <input type="text" id="name" name="name" />
+        <br />
+        <label>Email</label><br />
+        <input type="email" name="email" id="email" />
+        <br />
+        <label>Gender</label>
+        <select name="gender" id="gender">
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
+        <br />
+        <input type="submit" value="Submit" />
+      </form>
+    </div>
+
+    <script>
+      $(document).ready(function () {
+        /* START: CLICK EVENT */
+        // $('#btn1').on('click', function)
+        // We shouldn't use bind because it's deprecated
+        // It's the same thing as the previous snippet
+        // $('#btn1').click(function () {
+        //   alert('Button clicked');
+        // });
+        // Toggling the text show/hide
+        // $('#btn1').click(function () {
+        //   $('.para1').hide();
+        // });
+        // $('#btn2').click(function () {
+        //   $('.para1').show();
+        // });
+        // $('#btn1').click(function () {
+        //   $('.para1').toggle();
+        // });
+        /**********************************/
+        /* START: DOUBLE CLICK EVENT */
+        // $('#btn1').on('dblclick', function () {
+        //   $('.para1').toggle();
+        // });
+        // $('#btn1').dblclick(function () {
+        //   $('.para1').toggle();
+        // });
+        /**********************************/
+        /* START: HOVER EVENT (Not real event)*/
+        // This is just a shorthand syntax for 2 other events:
+        // 'mouseenter' and 'mouseleave' because
+        // $().on('hover') doesn't exist
+        // It basically applies the same callback to both
+        //  'mouseenter' and 'mouseleave'
+        // $('#btn1').hover(function () {
+        //   $('.para1').toggle();
+        // });
+        /**********************************/
+        /* START: MOUSE MOVE EVENT */
+        // $('#btn1').mousemove(function () {
+        //   $('.para1').toggle();
+        // });
+        /**********************************/
+        /* START: MOUSE UP EVENT (Mouse click up) */
+        // $('#btn1').mouseup(function () {
+        //   $('.para1').toggle();
+        // });
+        /**********************************/
+        /* START: MOUSE DOWN EVENT (Mouse click dowm)*/
+        // $('#btn1').mousedown(function () {
+        //   $('.para1').toggle();
+        // });
+        /**********************************/
+
+        // $('#btn1').click(function (e) {
+        //   var btn = e.currentTarget;
+
+        //   // alert(btn.id);
+        //   // alert(btn.innerHTML);
+        //   // alert(btn.outerHTML);
+        //   alert(btn.className);
+        // });
+
+        // This could be very useful for interactive applications
+        // that use animations and stuff like that
+        // $(document).mousemove(function (e) {
+        //   $('#xcoord').text(e.clientX);
+        //   $('#ycoord').text(e.clientY);
+        // });
+
+        /* START: FOCUS EVENT (When you click into an element)*/
+        // $('input').focus(function () {
+        //   $(this).css('background', 'lightblue');
+        // });
+        /**********************************/
+
+        /* START: BLUR EVENT (When you leave a focused element)*/
+        // $('input').blur(function () {
+        //   $(this).css('background', 'white');
+        // });
+        /**********************************/
+
+        /* START: KEY UP EVENT */
+        // $('input').keyup(function (e) {
+        //   console.log(e.target.value);
+        // });
+        /**********************************/
+
+        /* START: KEY DOWN EVENT */
+        // $('input').keydown(function (e) {
+        //   console.log(e.target.value);
+        // });
+        /**********************************/
+
+        /* START: CHANGE EVENT */
+        $('select#gender').change(function (e) {
+          alert(e.target.value);
+        });
+        /**********************************/
+
+        $('#form').submit(function (e) {
+          e.preventDefault();
+          var name = $('input#name').val();
+          console.log(name);
+        });
+      });
+    </script>
+  </body>
+</html>

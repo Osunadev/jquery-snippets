@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JQuery Crash Course | Selectors</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <style>
+      body {
+        font-size: 17px;
+        font-family: Arial, Helvetica, sans-serif;
+        background: #f4f4f4;
+        line-height: 1.5em;
+      }
+
+      header {
+        background: #333;
+        color: white;
+        padding: 20px;
+        text-align: center;
+        margin-bottom: 10px;
+        border-bottom: 4px solid #000;
+      }
+
+      #container {
+        width: 90%;
+        margin: 0 auto;
+        padding: 10px;
+      }
+
+      #box {
+        background: #333;
+        color: white;
+        width: 500px;
+        height: 90px;
+        padding: 40px;
+        text-align: center;
+      }
+
+      #box2 {
+        background: red;
+        width: 100px;
+        height: 100px;
+        position: relative;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>JQuery Crash Course | Effects & Animate</h1>
+    </header>
+
+    <div id="container">
+      <button id="btnFadeOut">Fade Out</button>
+      <button id="btnFadeIn">Fade In</button>
+      <button id="btnFadeTog">Fade Toggle</button>
+
+      <hr />
+
+      <button id="btnSlideUp">Slide Up</button>
+      <button id="btnSlideDown">Slide Down</button>
+      <button id="btnSlideTog">Slide Toggle</button>
+      <button id="btnStop">Stop Slide</button>
+
+      <hr />
+
+      <div id="box">
+        <h1>Hello World</h1>
+      </div>
+
+      <hr />
+
+      <button id="moveLeft">Move Left</button>
+      <button id="moveRight">Move Right</button>
+      <button id="moveAround">Move Around</button>
+
+      <div id="box2"></div>
+    </div>
+
+    <script>
+      $(document).ready(function () {
+        $('#btnFadeOut').click(function () {
+          // $('#box').fadeOut();
+          // $('#box').fadeOut('fast');
+          // $('#box').fadeOut('slow');
+          // This callback is optional, and gets called when
+          // the element has fade completely
+          $('#box').fadeOut(3000, function () {
+            $('#btnFadeOut').text('Its gone');
+          });
+        });
+
+        $('#btnFadeIn').click(function () {
+          $('#box').fadeIn(3000);
+        });
+
+        $('#btnFadeTog').click(function () {
+          // Does exactly the same time as the fadeOut and fadeIn
+          // together, this is every time the button is clicked
+          $('#box').fadeToggle(3000);
+        });
+      });
+
+      $('#btnSlideUp').click(function () {
+        $('#box').slideUp(3000);
+      });
+
+      $('#btnSlideDown').click(function () {
+        $('#box').slideDown(3000);
+      });
+
+      $('#btnSlideTog').click(function () {
+        $('#box').slideToggle(3000);
+      });
+
+      $('#btnStop').click(function () {
+        $('#box').stop();
+      });
+
+      $('#moveRight').click(function () {
+        $('#box2').animate({
+          // This is why #box2 position is relative, because we're modifying
+          // its position to make up an animation
+          left: 500, // We move 500 to the right (starting from the left)
+          height: '300px',
+          width: '300px',
+          opacity: '0.5',
+        });
+      });
+
+      $('#moveLeft').click(function () {
+        $('#box2').animate({
+          left: 0,
+          height: '100px',
+          width: '100px',
+          opacity: '1',
+        });
+      });
+
+      $('#moveAround').click(function () {
+        var box = $('#box2');
+
+        // This is a complete animation (right, down, left, up)
+        box.animate({
+          left: 300,
+        });
+
+        box.animate({
+          top: 300,
+        });
+
+        box.animate({
+          top: 300,
+          left: 0,
+        });
+
+        box.animate({
+          top: 0,
+          left: 0,
+        });
+      });
+    </script>
+  </body>
+</html>
